@@ -1,14 +1,27 @@
 $(document).ready(function () {
+  // html 태그의 lang 을 알아보자.
+  
+  
   // .header를 저장
   let header = $('.header');
   let depth1 = $('.depth1');
+  let gnb = $('.gnb');
+
+  // 펼쳐 졌을 때에 높이값
+let gnbMaxHeight = gnb.outerHeight();
+// 닫혔을 때에 높이값
+let gnbMinHeight = header.outerHeight();
+console.log(gnbMinHeight);
+// 기본 header의 높이값 적용
+header.css('height', gnbMinHeight);
+
 
   depth1.mouseenter(function () {
-    header.addClass('header-open');
+    header.css('height', gnbMaxHeight);
   });
 
   depth1.mouseleave(function () {
-    header.removeClass('header-open');
+    header.css('height', gnbMinHeight);
   });
 
   // 주메뉴 포커스 기능
@@ -29,8 +42,12 @@ $(document).ready(function () {
 
   // 컨텐츠 이동 버튼
   let visualBt = $('.visual-bt');
+  // .part 영역이 html의 상단으로 부터 떨어진 px값
+  let partY = $('.part').offset().top;
   visualBt.click(function () {
-
+    $('html').stop().animate({
+      scrollTop: partY
+    },500);
   });
 
 
@@ -42,4 +59,8 @@ $(document).ready(function () {
     tgX = -1 * tgX;
     $(this).css('background-position-x', tgX);
   });
+
+
+
+
 });

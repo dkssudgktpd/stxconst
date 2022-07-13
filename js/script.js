@@ -1,6 +1,19 @@
-$(document).ready(function () {
-  // html 태그의 lang 을 알아보자.
-  
+$(document).ready(function(){
+  // 안내창 기능
+  $('html').css('overflow','hidden');
+  let modalWrap = $('.modal-wrap');
+  let modalClose = $('.modal-close');
+  let modalMain = $('.modal-main');
+  modalClose.click(function(){
+    modalWrap.stop().fadeOut(100);
+    $('html').css('overflow','auto');
+  });
+  modalMain.click(function(event){
+    event.stopPropagation();
+  });
+  modalWrap.click(function(){
+    modalWrap.stop().fadeOut(100);
+  });
   
   // .header를 저장
   let header = $('.header');

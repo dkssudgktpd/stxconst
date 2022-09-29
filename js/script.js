@@ -1,19 +1,19 @@
 $(document).ready(function(){
   // 안내창 기능
-  $('html').css('overflow','hidden');
-  let modalWrap = $('.modal-wrap');
-  let modalClose = $('.modal-close');
-  let modalMain = $('.modal-main');
-  modalClose.click(function(){
-    modalWrap.stop().fadeOut(100);
-    $('html').css('overflow','auto');
-  });
-  modalMain.click(function(event){
-    event.stopPropagation();
-  });
-  modalWrap.click(function(){
-    modalWrap.stop().fadeOut(100);
-  });
+      const modal = $(".modal");
+      const modalClose = $(".modal-close");
+      const modalWrap = $(".modal-wrap");
+      modal.click(function () {
+        modal.fadeOut(500);
+        $("body").css("overflow", "auto");
+      });
+      modalClose.click(function () {
+        modal.fadeOut(500);
+        $("body").css("overflow", "auto");
+      });
+      modalWrap.click(function (event) {
+        event.stopPropagation();
+      });
   
   // .header를 저장
   let header = $('.header');
